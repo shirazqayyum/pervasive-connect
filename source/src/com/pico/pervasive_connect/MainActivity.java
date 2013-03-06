@@ -119,8 +119,8 @@ public class MainActivity extends Activity implements WifiP2pManager.PeerListLis
 	}
 
 	private void startPeerDiscovery() {
-		this.wifip2pManager.discoverPeers(this.wifiChannel,
-				this.broadcastReceiver);
+		
+		this.wifip2pManager.discoverPeers(this.wifiChannel, this.broadcastReceiver);
 	}
 
 	@Override
@@ -188,8 +188,7 @@ public class MainActivity extends Activity implements WifiP2pManager.PeerListLis
 			/* Start a new list activity that displays the list of discovered devices */
 			if (peerNames.size() > 0) {
 				
-				DisplayListActivity.setWifiP2pEnvironmentInfo(new WifiP2pEnvironmentInfo(this.wifiP2pManager, this.wifiChannel, 
-						MainActivity.devices));
+				DisplayListActivity.setWifiP2pEnvironmentInfo(new WifiP2pEnvironmentInfo(this.wifiP2pManager, this.wifiChannel, MainActivity.devices));
 				
 				Intent intent = new Intent(this.activity, DisplayListActivity.class);
 				intent.putStringArrayListExtra(MainActivity.WIFI_P2P_LIST, peerNames);
